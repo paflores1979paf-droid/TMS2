@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <clear />
+    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+  </packageSources>
+</configuration>
+
+# TMS — Generar instalador MSIX **sin** Visual Studio (100% web con GitHub)
+
+1) Creá un repo vacío en GitHub (privado o público).
+2) En GitHub, entrá al repo → **Add file → Upload files** → arrastrá **todo el contenido** de esta carpeta (subí *todas* las carpetas y archivos).
+3) Confirmá el commit.
+4) Pestaña **Actions** → seleccioná el workflow **build-windows-msix** → **Run workflow**.
+5) Cuando finaliza (verde), abajo verás **Artifacts → TMS_MSIX_x64**. Descargalo: trae `TMS_App_x64.msix` + `signing.cer`.
+6) En tu PC: doble clic `signing.cer` → *Instalar certificado* → *Usuario actual* → *Entidades de certificación raíz de confianza*.
+7) Doble clic `TMS_App_x64.msix` → *Instalar*. ¡Listo! Aparece en el menú Inicio como **TMS App**.
+
+> El workflow firma con un certificado **auto-firmado** para pruebas. Para distribuir a terceros, firmalo con un certificado oficial.
